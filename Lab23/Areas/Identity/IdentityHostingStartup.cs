@@ -1,6 +1,4 @@
 ﻿using System;
-using Lab23.Areas.Identity.Data;
-using Lab23.DAL;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -16,12 +14,12 @@ namespace Lab23.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<ShopDBContext>(options =>
+                services.AddDbContext<IdentityContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("ShopDBContextConnection")));
+                        context.Configuration.GetConnectionString("IdentityContextConnection")));
 
-                services.AddDefaultIdentity<ShopDBUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<ShopDBContext>();
+                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                    .AddEntityFrameworkStores<IdentityContext>();
             });
         }
     }

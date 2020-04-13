@@ -1,8 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using Lab23.Areas.Identity.Data
-
-@inject SignInManager<ShopDBUser> SignInManager
-@inject UserManager<ShopDBUser> UserManager
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
